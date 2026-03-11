@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Defense - U.S. GAO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== CSS Variables (USWDS-inspired) ===== */
+        :root {
+            /* Primary colors */
+            --primary-darker: #1a4480;
+            --primary-dark: #1a4480;
+            --primary: #005ea2;
+            --primary-light: #73b3e7;
+            --primary-lighter: #d9e8f6;
+
+            /* Secondary/Accent */
+            --secondary: #d83933;
+            --secondary-dark: #b50909;
+
+            /* Neutrals */
+            --base-darkest: #1b1b1b;
+            --base-darker: #2e2e2e;
+            --base-dark: #565c65;
+            --base: #71767a;
+            --base-light: #a9aeb1;
+            --base-lighter: #dfe1e2;
+            --base-lightest: #f0f0f0;
+            --white: #ffffff;
+
+            /* Status colors */
+            --success: #00a91c;
+            --success-light: #ecf3ec;
+            --warning: #ffbe2e;
+            --warning-light: #faf3d1;
+            --error: #d54309;
+            --error-light: #f4e3db;
+            --info: #00bde3;
+            --info-light: #e7f6f8;
+
+            /* Typography */
+            --font-sans: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-serif: 'Merriweather', Georgia, 'Times New Roman', serif;
+
+            /* Spacing */
+            --spacing-1: 0.25rem;
+            --spacing-2: 0.5rem;
+            --spacing-3: 0.75rem;
+            --spacing-4: 1rem;
+            --spacing-5: 1.5rem;
+            --spacing-6: 2rem;
+            --spacing-8: 3rem;
+            --spacing-10: 4rem;
+
+            /* Shadows */
+            --shadow-1: 0 1px 2px rgba(0,0,0,0.1);
+            --shadow-2: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-3: 0 4px 8px rgba(0,0,0,0.1);
+            --shadow-4: 0 6px 16px rgba(0,0,0,0.12);
+        }
+
+        /* ===== Reset & Base ===== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--base-darkest);
+            background: var(--white);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0 0 var(--spacing-4);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 1.75rem; }
+        h3 { font-size: 1.35rem; }
+        h4 { font-size: 1.125rem; }
+
+        p { margin: 0 0 var(--spacing-4); }
+
+        a {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        a:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* ===== Utilities ===== */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-4);
+        }
+
+        /* ===== Official Banner ===== */
+        .usa-banner {
+            background: var(--base-lightest);
+            font-size: 0.8125rem;
+            line-height: 1.4;
+        }
+
+        .usa-banner__inner {
+            padding: var(--spacing-2) var(--spacing-4);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .usa-banner__flag {
+            width: 16px;
+            height: 11px;
+            flex-shrink: 0;
+        }
+
+        .usa-banner__text {
+            color: var(--base-dark);
+        }
+
+        /* ===== Header ===== */
+        .site-header {
+            background: var(--primary-darker);
+            color: var(--white);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-4) 0;
+            flex-wrap: wrap;
+            gap: var(--spacing-4);
+        }
+
+        .site-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .site-logo:hover {
+            color: var(--white);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--white);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--primary-darker);
+            font-size: 1.25rem;
+        }
+
+        .site-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .site-title span {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .header-search {
+            display: flex;
+            max-width: 320px;
+            flex: 1;
+        }
+
+        .header-search input {
+            flex: 1;
+            padding: var(--spacing-2) var(--spacing-3);
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .header-search input:focus {
+            outline: 2px solid var(--warning);
+            outline-offset: -2px;
+        }
+
+        .header-search button {
+            padding: var(--spacing-2) var(--spacing-4);
+            background: var(--secondary);
+            color: var(--white);
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .header-search button:hover {
+            background: var(--secondary-dark);
+        }
+
+        /* Navigation */
+        .main-nav {
+            background: var(--primary-dark);
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-list a {
+            display: block;
+            padding: var(--spacing-3) var(--spacing-4);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-list a:hover,
+        .nav-list a[aria-current="page"] {
+            background: rgba(255,255,255,0.1);
+            border-bottom-color: var(--warning);
+        }
+
+        /* ===== Breadcrumbs ===== */
+        .breadcrumbs {
+            background: var(--white);
+            padding: var(--spacing-3) 0;
+            font-size: 0.875rem;
+            border-bottom: 1px solid var(--base-lighter);
+        }
+
+        .breadcrumbs ol {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: var(--spacing-1);
+            align-items: center;
+        }
+
+        .breadcrumbs li {
+            display: flex;
+            align-items: center;
+        }
+
+        .breadcrumbs li:not(:last-child)::after {
+            content: "/";
+            margin-left: var(--spacing-2);
+            color: var(--base-light);
+        }
+
+        .breadcrumbs a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs li:last-child {
+            color: var(--base-dark);
+        }
+
+        /* ===== Page Header ===== */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-darker) 0%, var(--primary) 100%);
+            color: var(--white);
+            padding: var(--spacing-8) 0 var(--spacing-10);
+        }
+
+        .page-header-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: var(--spacing-6);
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .page-header-content {
+                grid-template-columns: 1fr;
+            }
+            .page-header-seal {
+                display: none;
+            }
+        }
+
+        .page-header h1 {
+            font-family: var(--font-serif);
+            font-size: 2.75rem;
+            margin-bottom: var(--spacing-4);
+        }
+
+        .page-header-description {
+            font-size: 1.125rem;
+            opacity: 0.95;
+            margin-bottom: var(--spacing-4);
+            line-height: 1.7;
+        }
+
+        .page-header-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-4);
+            font-size: 0.9375rem;
+            opacity: 0.9;
+        }
+
+        .page-header-meta span {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+        }
+
+        .page-header-seal {
+            text-align: center;
+        }
+
+        .seal-placeholder {
+            width: 180px;
+            height: 180px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            border: 4px solid rgba(255,255,255,0.3);
+        }
+
+        .seal-placeholder svg {
+            width: 100px;
+            height: 100px;
+            opacity: 0.9;
+        }
+
+        /* ===== Stats Bar ===== */
+        .stats-bar {
+            background: var(--white);
+            box-shadow: var(--shadow-4);
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+            border-radius: 8px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        @media (max-width: 900px) {
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .stat-item {
+            padding: var(--spacing-5);
+            text-align: center;
+            border-right: 1px solid var(--base-lighter);
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-number {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: var(--spacing-2);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--base-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        /* ===== About Section ===== */
+        .about-section {
+            background: var(--base-lightest);
+            padding: var(--spacing-8) 0;
+            margin-top: var(--spacing-8);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: var(--spacing-6);
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .about-content h2 {
+            color: var(--primary-darker);
+            margin-bottom: var(--spacing-4);
+        }
+
+        .about-content p {
+            color: var(--base-dark);
+            font-size: 1.0625rem;
+            line-height: 1.7;
+        }
+
+        .key-facts {
+            background: var(--white);
+            padding: var(--spacing-5);
+            border-radius: 8px;
+            box-shadow: var(--shadow-2);
+        }
+
+        .key-facts h3 {
+            color: var(--primary-darker);
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-4);
+            padding-bottom: var(--spacing-3);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .key-facts ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .key-facts li {
+            padding: var(--spacing-3) 0;
+            border-bottom: 1px solid var(--base-lighter);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9375rem;
+        }
+
+        .key-facts li:last-child {
+            border-bottom: none;
+        }
+
+        .key-facts .fact-label {
+            color: var(--base-dark);
+        }
+
+        .key-facts .fact-value {
+            font-weight: 600;
+            color: var(--base-darkest);
+        }
+
+        /* ===== Main Content ===== */
+        .main-content {
+            padding: var(--spacing-8) 0;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: var(--spacing-8);
+        }
+
+        @media (max-width: 900px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== Section Styling ===== */
+        .section {
+            margin-bottom: var(--spacing-8);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-5);
+            padding-bottom: var(--spacing-3);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .section-header h2 {
+            margin: 0;
+            color: var(--base-darkest);
+        }
+
+        .view-all-link {
+            font-weight: 600;
+            font-size: 0.9375rem;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-1);
+        }
+
+        /* ===== Key Issues Section ===== */
+        .key-issues {
+            background: var(--warning-light);
+            border-radius: 8px;
+            padding: var(--spacing-5);
+            margin-bottom: var(--spacing-6);
+            border-left: 4px solid var(--warning);
+        }
+
+        .key-issues h3 {
+            color: #5c4102;
+            margin-bottom: var(--spacing-4);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+        }
+
+        .key-issues ul {
+            margin: 0;
+            padding-left: var(--spacing-5);
+        }
+
+        .key-issues li {
+            margin-bottom: var(--spacing-2);
+            color: var(--base-darker);
+        }
+
+        .key-issues li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ===== Mission Areas ===== */
+        .mission-areas {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-4);
+            margin-bottom: var(--spacing-6);
+        }
+
+        @media (max-width: 900px) {
+            .mission-areas {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .mission-areas {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .mission-card {
+            background: var(--white);
+            border: 1px solid var(--base-lighter);
+            border-radius: 8px;
+            padding: var(--spacing-5);
+            text-align: center;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .mission-card:hover {
+            box-shadow: var(--shadow-3);
+            transform: translateY(-2px);
+        }
+
+        .mission-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-lighter);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-3);
+        }
+
+        .mission-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--primary);
+        }
+
+        .mission-card h4 {
+            margin-bottom: var(--spacing-2);
+            color: var(--base-darkest);
+            font-size: 1rem;
+        }
+
+        .mission-card p {
+            font-size: 0.8125rem;
+            color: var(--base-dark);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* ===== Report Cards with Images ===== */
+        .report-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-5);
+        }
+
+        .report-card {
+            background: var(--white);
+            border: 1px solid var(--base-lighter);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: box-shadow 0.2s, border-color 0.2s;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+        }
+
+        @media (max-width: 600px) {
+            .report-card {
+                grid-template-columns: 1fr;
+            }
+            .report-card-image {
+                height: 150px;
+            }
+        }
+
+        .report-card:hover {
+            box-shadow: var(--shadow-3);
+            border-color: var(--primary-light);
+        }
+
+        .report-card-image {
+            background: var(--primary-lighter);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 160px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .report-card-image svg {
+            width: 64px;
+            height: 64px;
+            fill: var(--primary);
+            opacity: 0.5;
+        }
+
+        .report-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .report-card-content {
+            padding: var(--spacing-5);
+        }
+
+        .report-type {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: var(--spacing-1) var(--spacing-2);
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.6875rem;
+            text-transform: uppercase;
+            margin-bottom: var(--spacing-2);
+            letter-spacing: 0.5px;
+        }
+
+        .report-type.testimony {
+            background: #7d4698;
+        }
+
+        .report-card h3 {
+            margin-bottom: var(--spacing-2);
+            font-size: 1.0625rem;
+            line-height: 1.4;
+        }
+
+        .report-card h3 a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .report-card h3 a:hover {
+            text-decoration: underline;
+        }
+
+        .report-description {
+            color: var(--base-dark);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            margin-bottom: var(--spacing-3);
+        }
+
+        .report-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-3);
+            font-size: 0.8125rem;
+            color: var(--base);
+        }
+
+        .report-number {
+            background: var(--base-lightest);
+            padding: var(--spacing-1) var(--spacing-2);
+            border-radius: 4px;
+            font-family: 'SFMono-Regular', Consolas, monospace;
+            font-weight: 600;
+            color: var(--base-dark);
+            font-size: 0.75rem;
+        }
+
+        /* ===== Recommendations Section ===== */
+        .recommendations-summary {
+            background: var(--info-light);
+            border-radius: 8px;
+            padding: var(--spacing-5);
+            margin-bottom: var(--spacing-6);
+        }
+
+        .rec-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-4);
+            text-align: center;
+            margin-bottom: var(--spacing-4);
+        }
+
+        @media (max-width: 480px) {
+            .rec-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .rec-stat {
+            padding: var(--spacing-4);
+            background: var(--white);
+            border-radius: 6px;
+        }
+
+        .rec-stat-number {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-1);
+        }
+
+        .rec-stat-number.open { color: var(--error); }
+        .rec-stat-number.closed { color: var(--success); }
+        .rec-stat-number.total { color: var(--primary); }
+
+        .rec-stat-label {
+            font-size: 0.75rem;
+            color: var(--base-dark);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .rec-progress {
+            margin-top: var(--spacing-4);
+        }
+
+        .progress-bar {
+            height: 12px;
+            background: var(--base-lighter);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--success);
+            border-radius: 6px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--spacing-2);
+            font-size: 0.8125rem;
+            color: var(--base-dark);
+        }
+
+        /* ===== Related Topics ===== */
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-3);
+        }
+
+        @media (max-width: 600px) {
+            .topics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .topic-card {
+            display: block;
+            background: var(--base-lightest);
+            padding: var(--spacing-4);
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--base-darkest);
+            font-weight: 600;
+            transition: background 0.2s, transform 0.2s;
+            border-left: 4px solid var(--primary);
+        }
+
+        .topic-card:hover {
+            background: var(--primary-lighter);
+            transform: translateX(4px);
+        }
+
+        .topic-card.high-risk {
+            border-left-color: var(--error);
+            background: var(--error-light);
+        }
+
+        .topic-card.high-risk:hover {
+            background: #f8d0c3;
+        }
+
+        .topic-label {
+            display: block;
+            font-size: 0.6875rem;
+            text-transform: uppercase;
+            color: var(--base);
+            margin-bottom: var(--spacing-1);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .topic-card.high-risk .topic-label {
+            color: var(--error);
+        }
+
+        /* ===== Sidebar ===== */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-6);
+        }
+
+        .sidebar-section {
+            background: var(--base-lightest);
+            border-radius: 8px;
+            padding: var(--spacing-5);
+        }
+
+        .sidebar-section h3 {
+            margin-bottom: var(--spacing-4);
+            padding-bottom: var(--spacing-3);
+            border-bottom: 2px solid var(--primary);
+            font-size: 1.125rem;
+        }
+
+        /* Quick Links */
+        .quick-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .quick-links li {
+            border-bottom: 1px solid var(--base-lighter);
+        }
+
+        .quick-links li:last-child {
+            border-bottom: none;
+        }
+
+        .quick-links a {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+            padding: var(--spacing-3) 0;
+            text-decoration: none;
+            color: var(--base-darkest);
+            font-weight: 500;
+        }
+
+        .quick-links a:hover {
+            color: var(--primary);
+        }
+
+        .quick-links .icon {
+            width: 28px;
+            height: 28px;
+            background: var(--primary-lighter);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        /* Multimedia */
+        .media-item {
+            margin-bottom: var(--spacing-4);
+            padding-bottom: var(--spacing-4);
+            border-bottom: 1px solid var(--base-lighter);
+        }
+
+        .media-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .media-type {
+            display: inline-block;
+            font-size: 0.625rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: var(--spacing-1) var(--spacing-2);
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 3px;
+            margin-bottom: var(--spacing-2);
+            letter-spacing: 0.5px;
+        }
+
+        .media-type.video { background: var(--secondary); }
+        .media-type.podcast { background: #7d4698; }
+        .media-type.infographic { background: #2e8540; }
+
+        .media-item h4 {
+            margin-bottom: var(--spacing-2);
+            font-size: 0.9375rem;
+            line-height: 1.4;
+        }
+
+        .media-item h4 a {
+            color: var(--base-darkest);
+            text-decoration: none;
+        }
+
+        .media-item h4 a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        .media-date {
+            font-size: 0.8125rem;
+            color: var(--base);
+        }
+
+        /* ===== Button ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            padding: var(--spacing-3) var(--spacing-5);
+            background: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            color: var(--white);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* ===== Footer ===== */
+        .site-footer {
+            background: var(--base-darkest);
+            color: var(--white);
+            padding: var(--spacing-8) 0 var(--spacing-4);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-6);
+            margin-bottom: var(--spacing-6);
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .footer-section h4 {
+            color: var(--white);
+            margin-bottom: var(--spacing-4);
+            font-size: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section li {
+            margin-bottom: var(--spacing-2);
+        }
+
+        .footer-section a {
+            color: var(--base-light);
+            text-decoration: none;
+            font-size: 0.9375rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            padding-top: var(--spacing-4);
+            border-top: 1px solid var(--base-dark);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--spacing-4);
+            font-size: 0.875rem;
+            color: var(--base-light);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--spacing-4);
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--base-light);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .header-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-search {
+                width: 100%;
+                max-width: none;
+            }
+
+            .nav-list {
+                flex-direction: column;
+            }
+
+            .nav-list a {
+                border-bottom: none;
+                border-left: 3px solid transparent;
+            }
+
+            .nav-list a:hover,
+            .nav-list a[aria-current="page"] {
+                border-bottom: none;
+                border-left-color: var(--warning);
+            }
+        }
+
+        /* ===== Print Styles ===== */
+        @media print {
+            .site-header,
+            .site-footer,
+            .header-search,
+            .btn {
+                display: none;
+            }
+
+            .page-header {
+                background: none;
+                color: var(--base-darkest);
+                padding: var(--spacing-4) 0;
+            }
+
+            .content-grid {
+                display: block;
+            }
+
+            .sidebar {
+                margin-top: var(--spacing-6);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Official US Government Banner -->
+    <section class="usa-banner" aria-label="Official government website">
+        <div class="usa-banner__inner">
+            <img class="usa-banner__flag" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 11'%3E%3Crect fill='%23bf0a30' width='16' height='11'/%3E%3Crect fill='white' y='0.85' width='16' height='0.85'/%3E%3Crect fill='white' y='2.54' width='16' height='0.85'/%3E%3Crect fill='white' y='4.23' width='16' height='0.85'/%3E%3Crect fill='white' y='5.92' width='16' height='0.85'/%3E%3Crect fill='white' y='7.62' width='16' height='0.85'/%3E%3Crect fill='white' y='9.31' width='16' height='0.85'/%3E%3Crect fill='%23002868' width='6.4' height='5.92'/%3E%3C/svg%3E" alt="U.S. flag">
+            <span class="usa-banner__text">NOT an official website of the United States government - This is a design mockup</span>
+        </div>
+    </section>
+
+    <!-- Site Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-top">
+                <a href="/" class="site-logo">
+                    <div class="logo-icon">GAO</div>
+                    <div class="site-title">
+                        U.S. Government Accountability Office
+                        <span>Watchdog of Congress</span>
+                    </div>
+                </a>
+                <form class="header-search" role="search" action="/search" method="get">
+                    <label for="search" class="sr-only">Search GAO.gov</label>
+                    <input type="search" id="search" name="q" placeholder="Search GAO.gov">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+        <nav class="main-nav" aria-label="Main navigation">
+            <div class="container">
+                <ul class="nav-list">
+                    <li><a href="/reports-testimonies">Reports & Testimonies</a></li>
+                    <li><a href="/topics">Topics</a></li>
+                    <li><a href="/agencies" aria-current="page">Agencies</a></li>
+                    <li><a href="/legal">Legal</a></li>
+                    <li><a href="/about">About GAO</a></li>
+                    <li><a href="/for-congress">For Congress</a></li>
+                    <li><a href="/careers">Careers</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <div class="container">
+            <ol>
+                <li><a href="/">Home</a></li>
+                <li><a href="/agencies">Agencies</a></li>
+                <li aria-current="page">Department of Defense</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <div class="page-header-text">
+                    <h1>Department of Defense</h1>
+                    <p class="page-header-description">
+                        The Department of Defense (DOD) is the largest federal agency, responsible for providing the military forces needed to deter war and protect the security of the United States. GAO conducts extensive oversight of DOD's operations, programs, and spending to help ensure accountability in national defense.
+                    </p>
+                    <div class="page-header-meta">
+                        <span>
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+                            The Pentagon, Washington, D.C.
+                        </span>
+                        <span>
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/><path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg>
+                            2.9 Million Employees
+                        </span>
+                        <span>
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/></svg>
+                            $886B FY2024 Budget
+                        </span>
+                    </div>
+                </div>
+                <div class="page-header-seal">
+                    <div class="seal-placeholder">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm-1.06 13.54L7.4 12l1.41-1.41 2.12 2.12 4.24-4.24 1.41 1.41-5.64 5.66z"/></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="container">
+        <div class="stats-bar">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">2,847</div>
+                    <div class="stat-label">Total Reports</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1,247</div>
+                    <div class="stat-label">Open Recommendations</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">$47.8B</div>
+                    <div class="stat-label">Financial Benefits</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">14</div>
+                    <div class="stat-label">High Risk Areas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">87%</div>
+                    <div class="stat-label">Implementation Rate</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2>GAO's Role in Defense Oversight</h2>
+                    <p>
+                        GAO provides Congress with independent, nonpartisan analysis of DOD programs and operations. Our work spans weapon systems acquisition, military readiness, cybersecurity, financial management, healthcare, and personnel issues. We identify opportunities to improve efficiency, reduce costs, and strengthen national security.
+                    </p>
+                    <p>
+                        DOD has the most recommendations of any federal agency on GAO's High Risk List, reflecting the scope and complexity of defense operations. Our recommendations have helped save taxpayers billions of dollars and improve the effectiveness of defense programs.
+                    </p>
+                </div>
+                <div class="key-facts">
+                    <h3>Key Facts</h3>
+                    <ul>
+                        <li><span class="fact-label">Established</span> <span class="fact-value">1947</span></li>
+                        <li><span class="fact-label">Military Branches</span> <span class="fact-value">6</span></li>
+                        <li><span class="fact-label">Active Duty Personnel</span> <span class="fact-value">1.3 Million</span></li>
+                        <li><span class="fact-label">Major Weapon Programs</span> <span class="fact-value">85+</span></li>
+                        <li><span class="fact-label">Installations Worldwide</span> <span class="fact-value">4,800+</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Key Issues Alert -->
+            <div class="key-issues">
+                <h3>
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
+                    Key Challenges Facing DOD
+                </h3>
+                <ul>
+                    <li><strong>Financial Management:</strong> DOD remains unable to pass a full financial audit, with significant weaknesses in accounting systems and internal controls.</li>
+                    <li><strong>Weapon Systems Acquisition:</strong> Major programs continue to experience cost growth and schedule delays, with the F-35 program alone costing over $400 billion.</li>
+                    <li><strong>Cybersecurity:</strong> Critical infrastructure and weapon systems face increasing cyber threats from nation-state actors.</li>
+                    <li><strong>Readiness:</strong> Equipment maintenance backlogs and personnel shortages affect military readiness across all services.</li>
+                </ul>
+            </div>
+
+            <!-- Mission Areas -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>DOD Mission Areas We Review</h2>
+                </div>
+                <div class="mission-areas">
+                    <div class="mission-card">
+                        <div class="mission-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+                        </div>
+                        <h4>Weapon Systems</h4>
+                        <p>Aircraft, ships, ground vehicles, missiles, and acquisition programs</p>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+                        </div>
+                        <h4>Cybersecurity</h4>
+                        <p>Network defense, cyber operations, and information security</p>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-icon">
+                            <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                        </div>
+                        <h4>Financial Management</h4>
+                        <p>Audit readiness, budgeting, and cost estimation</p>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-icon">
+                            <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                        </div>
+                        <h4>Personnel & Readiness</h4>
+                        <p>Military personnel, training, healthcare, and force readiness</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="content-grid">
+                <!-- Primary Content -->
+                <div class="primary-content">
+                    <!-- Recommendations Summary -->
+                    <section class="section">
+                        <div class="section-header">
+                            <h2>Recommendations Status</h2>
+                            <a href="/recommendations?agency=dod" class="view-all-link">View Database &rarr;</a>
+                        </div>
+                        <div class="recommendations-summary">
+                            <div class="rec-stats">
+                                <div class="rec-stat">
+                                    <div class="rec-stat-number open">1,247</div>
+                                    <div class="rec-stat-label">Open</div>
+                                </div>
+                                <div class="rec-stat">
+                                    <div class="rec-stat-number closed">8,653</div>
+                                    <div class="rec-stat-label">Implemented</div>
+                                </div>
+                                <div class="rec-stat">
+                                    <div class="rec-stat-number total">9,900</div>
+                                    <div class="rec-stat-label">Total</div>
+                                </div>
+                            </div>
+                            <div class="rec-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 87.4%"></div>
+                                </div>
+                                <div class="progress-label">
+                                    <span>Implementation Rate</span>
+                                    <strong>87.4%</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Recent Reports -->
+                    <section class="section">
+                        <div class="section-header">
+                            <h2>Recent Reports</h2>
+                            <a href="/reports-testimonies?agency=dod" class="view-all-link">View All &rarr;</a>
+                        </div>
+                        <div class="report-list">
+                            <article class="report-card">
+                                <div class="report-card-image">
+                                    <img src="https://www.gao.gov/assets/extracts/660eb4cb7905d6b08a561e4a3ce12413/rId16_image5.png" alt="Defense Budget report">
+                                </div>
+                                <div class="report-card-content">
+                                    <span class="report-type">Report</span>
+                                    <h3><a href="https://www.gao.gov/products/gao-26-107065">Defense Budget: Effects of Continuing Resolutions on Selected Activities and Programs Critical to DOD's National Security Mission</a></h3>
+                                    <p class="report-description">Examines how operating under continuing resolutions has delayed military construction projects, hindered new program starts, and created inefficiencies in DOD's budget execution.</p>
+                                    <div class="report-meta">
+                                        <span class="report-number">GAO-26-107065</span>
+                                        <span>Jan 21, 2026</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="report-card">
+                                <div class="report-card-image">
+                                    <img src="https://www.gao.gov/assets/extracts/966dee596b3593eefe29e070b13f9a49/rId17_image5.png" alt="Coast Guard Oversight report">
+                                </div>
+                                <div class="report-card-content">
+                                    <span class="report-type">Report</span>
+                                    <h3><a href="https://www.gao.gov/products/gao-26-107341">Coast Guard Oversight: Actions Needed to Strengthen Collaboration on Investigations</a></h3>
+                                    <p class="report-description">Reviews the coordination between the Coast Guard and DOD Inspector General on sexual assault and misconduct investigations. Identifies gaps in information sharing.</p>
+                                    <div class="report-meta">
+                                        <span class="report-number">GAO-26-107341</span>
+                                        <span>Jan 21, 2026</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="report-card">
+                                <div class="report-card-image">
+                                    <img src="https://www.gao.gov/assets/extracts/a7757826c35dd76fe834e92dcd10bd88/rId16_image5.png" alt="Inspector General Oversight report">
+                                </div>
+                                <div class="report-card-content">
+                                    <span class="report-type">Report</span>
+                                    <h3><a href="https://www.gao.gov/products/gao-26-108639">Coast Guard: Inspector General Oversight of the Coast Guard and Other Military Services</a></h3>
+                                    <p class="report-description">Compares IG oversight structures across military services and evaluates the adequacy of Coast Guard's internal investigation capabilities.</p>
+                                    <div class="report-meta">
+                                        <span class="report-number">GAO-26-108639</span>
+                                        <span>Jan 21, 2026</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="report-card">
+                                <div class="report-card-image">
+                                    <img src="https://www.gao.gov/assets/extracts/4b28801dbd31fce8220765b758b77420/rId18_image5.png" alt="Space Force Acquisition report">
+                                </div>
+                                <div class="report-card-content">
+                                    <span class="report-type">Report</span>
+                                    <h3><a href="https://www.gao.gov/products/gao-26-107524">Space Force Acquisition: Actions Needed to Improve Oversight of Rapid Capabilities</a></h3>
+                                    <p class="report-description">Evaluates Space Force's approach to rapidly acquiring new capabilities and identifies oversight gaps that could lead to cost and schedule risks.</p>
+                                    <div class="report-meta">
+                                        <span class="report-number">GAO-26-107524</span>
+                                        <span>Jan 15, 2026</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="report-card">
+                                <div class="report-card-image">
+                                    <img src="https://www.gao.gov/assets/extracts/7e0ae82e018b53186b3b77386ba40834/rId18_image5.png" alt="Navy Shipbuilding report">
+                                </div>
+                                <div class="report-card-content">
+                                    <span class="report-type">Report</span>
+                                    <h3><a href="https://www.gao.gov/products/gao-26-107601">Navy Shipbuilding: Persistent Quality Issues and Workforce Challenges Continue to Delay Deliveries</a></h3>
+                                    <p class="report-description">Assesses ongoing challenges in Navy shipbuilding programs including quality defects, workforce shortages at shipyards, and supply chain disruptions.</p>
+                                    <div class="report-meta">
+                                        <span class="report-number">GAO-26-107601</span>
+                                        <span>Jan 10, 2026</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div style="margin-top: var(--spacing-5); text-align: center;">
+                            <a href="/reports-testimonies?agency=dod" class="btn btn-outline">View More Reports</a>
+                        </div>
+                    </section>
+
+                    <!-- Related Topics -->
+                    <section class="section">
+                        <div class="section-header">
+                            <h2>Related Topics</h2>
+                        </div>
+                        <div class="topics-grid">
+                            <a href="/high-risk/dod-weapon-systems-acquisition" class="topic-card high-risk">
+                                <span class="topic-label">High Risk</span>
+                                DOD Weapon Systems Acquisition
+                            </a>
+                            <a href="/high-risk/dod-contract-management" class="topic-card high-risk">
+                                <span class="topic-label">High Risk</span>
+                                DOD Contract Management
+                            </a>
+                            <a href="/high-risk/dod-financial-management" class="topic-card high-risk">
+                                <span class="topic-label">High Risk</span>
+                                DOD Financial Management
+                            </a>
+                            <a href="/high-risk/dod-business-systems" class="topic-card high-risk">
+                                <span class="topic-label">High Risk</span>
+                                DOD Business Systems Modernization
+                            </a>
+                            <a href="/quantum-technology" class="topic-card">
+                                <span class="topic-label">Related</span>
+                                Quantum Technology
+                            </a>
+                            <a href="/federal-contracting" class="topic-card">
+                                <span class="topic-label">Related</span>
+                                Federal Contracting
+                            </a>
+                            <a href="/ukraine-oversight" class="topic-card">
+                                <span class="topic-label">Related</span>
+                                Ukraine Oversight
+                            </a>
+                            <a href="/cybersecurity" class="topic-card">
+                                <span class="topic-label">Related</span>
+                                Cybersecurity
+                            </a>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <section class="sidebar-section">
+                        <h3>Quick Links</h3>
+                        <ul class="quick-links">
+                            <li><a href="/recommendations?agency=dod&status=open"><span class="icon">&rarr;</span> Open Recommendations</a></li>
+                            <li><a href="/high-risk?agency=dod"><span class="icon">!</span> High Risk Areas</a></li>
+                            <li><a href="/priority-recommendations/dod"><span class="icon">&#9733;</span> Priority Recommendations</a></li>
+                            <li><a href="/reports-testimonies?agency=dod&type=testimony"><span class="icon">&#9998;</span> Congressional Testimonies</a></li>
+                            <li><a href="/bid-protests?agency=dod"><span class="icon">&#9878;</span> Bid Protest Decisions</a></li>
+                        </ul>
+                    </section>
+
+                    <section class="sidebar-section">
+                        <h3>Multimedia</h3>
+                        <div class="media-item">
+                            <span class="media-type video">Video</span>
+                            <h4><a href="/video/continuing-resolutions-impact-dod">Continuing Resolutions' Impact on DOD</a></h4>
+                            <div class="media-date">Jan 21, 2026</div>
+                        </div>
+                        <div class="media-item">
+                            <span class="media-type video">Video</span>
+                            <h4><a href="/video/military-cyberspace-operations">Military Cyberspace Operations and Cyber Threats</a></h4>
+                            <div class="media-date">Sep 17, 2025</div>
+                        </div>
+                        <div class="media-item">
+                            <span class="media-type podcast">Podcast</span>
+                            <h4><a href="/podcast/dod-unfunded-priorities">What are DOD's Unfunded Priorities?</a></h4>
+                            <div class="media-date">Sep 4, 2025</div>
+                        </div>
+                        <div class="media-item">
+                            <span class="media-type infographic">Infographic</span>
+                            <h4><a href="/infographic/duplication-cost-savings">Duplication & Cost Savings</a></h4>
+                            <div class="media-date">Apr 26, 2017</div>
+                        </div>
+                    </section>
+
+                    <section class="sidebar-section">
+                        <h3>GAO Contact</h3>
+                        <p style="margin: 0 0 var(--spacing-3); font-size: 0.9375rem;">
+                            <strong>Defense Capabilities and Management</strong><br>
+                            Managing Director
+                        </p>
+                        <p style="margin: 0; font-size: 0.875rem; color: var(--base-dark);">
+                            For questions about DOD-related work:<br>
+                            <a href="mailto:dcm@gao.gov">dcm@gao.gov</a><br>
+                            (202) 512-4300
+                        </p>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>About GAO</h4>
+                    <ul>
+                        <li><a href="/about">What GAO Does</a></li>
+                        <li><a href="/about/comptroller-general">Comptroller General</a></li>
+                        <li><a href="/about/organization">Our Organization</a></li>
+                        <li><a href="/careers">Careers at GAO</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Help</h4>
+                    <ul>
+                        <li><a href="/contact">Contact Us</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                        <li><a href="/site-policies">Site Policies</a></li>
+                        <li><a href="/accessibility">Accessibility</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="/subscribe">Email Updates</a></li>
+                        <li><a href="https://twitter.com/usgao">Twitter/X</a></li>
+                        <li><a href="https://www.facebook.com/usgao">Facebook</a></li>
+                        <li><a href="https://www.linkedin.com/company/us-government-accountability-office">LinkedIn</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/fraud">Report Fraud</a></li>
+                        <li><a href="/inspector-general">Inspector General</a></li>
+                        <li><a href="/foia">FOIA</a></li>
+                        <li><a href="/no-fear">No FEAR Act</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 U.S. Government Accountability Office</div>
+                <div class="footer-links">
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/accessibility">Accessibility</a>
+                    <a href="/sitemap">Site Map</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U.S. Government Accountability Office (U.S. GAO)</title>
+    <meta name="description" content="GAO provides fact-based, nonpartisan information to Congress. Often called the 'congressional watchdog,' GAO investigates federal spending and performance.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== CSS Variables (USWDS-inspired) ===== */
+        :root {
+            --primary-darker: #1a4480;
+            --primary-dark: #1a4480;
+            --primary: #005ea2;
+            --primary-light: #73b3e7;
+            --primary-lighter: #d9e8f6;
+            --secondary: #d83933;
+            --secondary-dark: #b50909;
+            --base-darkest: #1b1b1b;
+            --base-darker: #2e2e2e;
+            --base-dark: #565c65;
+            --base: #71767a;
+            --base-light: #a9aeb1;
+            --base-lighter: #dfe1e2;
+            --base-lightest: #f0f0f0;
+            --white: #ffffff;
+            --success: #00a91c;
+            --success-light: #ecf3ec;
+            --warning: #ffbe2e;
+            --warning-light: #faf3d1;
+            --error: #d54309;
+            --error-light: #f4e3db;
+            --info: #00bde3;
+            --info-light: #e7f6f8;
+            --font-sans: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-serif: 'Merriweather', Georgia, 'Times New Roman', serif;
+            --spacing-1: 0.25rem;
+            --spacing-2: 0.5rem;
+            --spacing-3: 0.75rem;
+            --spacing-4: 1rem;
+            --spacing-5: 1.5rem;
+            --spacing-6: 2rem;
+            --spacing-8: 3rem;
+            --spacing-10: 4rem;
+            --shadow-1: 0 1px 2px rgba(0,0,0,0.1);
+            --shadow-2: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-3: 0 4px 8px rgba(0,0,0,0.1);
+            --shadow-4: 0 6px 16px rgba(0,0,0,0.12);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--base-darkest);
+            background: var(--white);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0 0 var(--spacing-4);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 1.75rem; }
+        h3 { font-size: 1.35rem; }
+        h4 { font-size: 1.125rem; }
+
+        p { margin: 0 0 var(--spacing-4); }
+
+        a {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        a:hover { color: var(--primary-dark); }
+
+        a:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        img { max-width: 100%; height: auto; }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-4);
+        }
+
+        /* ===== Official Banner ===== */
+        .usa-banner {
+            background: var(--base-lightest);
+            font-size: 0.8125rem;
+            line-height: 1.4;
+        }
+
+        .usa-banner__inner {
+            padding: var(--spacing-2) var(--spacing-4);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .usa-banner__flag {
+            width: 16px;
+            height: 11px;
+            flex-shrink: 0;
+        }
+
+        .usa-banner__text { color: var(--base-dark); }
+
+        /* ===== Header ===== */
+        .site-header {
+            background: var(--primary-darker);
+            color: var(--white);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-4) 0;
+            flex-wrap: wrap;
+            gap: var(--spacing-4);
+        }
+
+        .site-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .site-logo:hover { color: var(--white); }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--white);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--primary-darker);
+            font-size: 1.25rem;
+        }
+
+        .site-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .site-title span {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .header-search {
+            display: flex;
+            max-width: 320px;
+            flex: 1;
+        }
+
+        .header-search input {
+            flex: 1;
+            padding: var(--spacing-2) var(--spacing-3);
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .header-search input:focus {
+            outline: 2px solid var(--warning);
+            outline-offset: -2px;
+        }
+
+        .header-search button {
+            padding: var(--spacing-2) var(--spacing-4);
+            background: var(--secondary);
+            color: var(--white);
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .header-search button:hover { background: var(--secondary-dark); }
+
+        .main-nav {
+            background: var(--primary-dark);
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-list a {
+            display: block;
+            padding: var(--spacing-3) var(--spacing-4);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-list a:hover,
+        .nav-list a[aria-current="page"] {
+            background: rgba(255,255,255,0.1);
+            border-bottom-color: var(--warning);
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-darker) 0%, var(--primary) 100%);
+            color: var(--white);
+            padding: var(--spacing-10) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='rgba(255,255,255,0.05)' stroke-width='8'/%3E%3C/svg%3E") center center no-repeat;
+            background-size: 600px;
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            margin-bottom: var(--spacing-4);
+            line-height: 1.2;
+        }
+
+        .hero-tagline {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin-bottom: var(--spacing-6);
+            line-height: 1.6;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: var(--spacing-4);
+            flex-wrap: wrap;
+        }
+
+        /* ===== Buttons ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            padding: var(--spacing-3) var(--spacing-5);
+            background: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            color: var(--white);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border-color: currentColor;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--primary-darker);
+        }
+
+        .btn-white:hover {
+            background: var(--base-lightest);
+            color: var(--primary-darker);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary-dark);
+        }
+
+        /* ===== Impact Stats ===== */
+        .impact-stats {
+            background: var(--white);
+            padding: var(--spacing-8) 0;
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stats-card {
+            background: var(--white);
+            box-shadow: var(--shadow-4);
+            border-radius: 12px;
+            padding: var(--spacing-6);
+        }
+
+        .stats-header {
+            text-align: center;
+            margin-bottom: var(--spacing-6);
+        }
+
+        .stats-header h2 {
+            color: var(--primary-darker);
+            margin-bottom: var(--spacing-2);
+        }
+
+        .stats-header p {
+            color: var(--base-dark);
+            margin: 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-5);
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 500px) {
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+
+        .stat-item {
+            padding: var(--spacing-4);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: var(--spacing-2);
+        }
+
+        .stat-number.savings { color: var(--success); }
+        .stat-number.risk { color: var(--error); }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--base-dark);
+            font-weight: 500;
+        }
+
+        .stat-sublabel {
+            font-size: 0.75rem;
+            color: var(--base);
+            margin-top: var(--spacing-1);
+        }
+
+        /* ===== Section Styling ===== */
+        .section {
+            padding: var(--spacing-8) 0;
+        }
+
+        .section-light {
+            background: var(--base-lightest);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-5);
+            padding-bottom: var(--spacing-3);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .section-header h2 {
+            margin: 0;
+            color: var(--base-darkest);
+        }
+
+        .view-all-link {
+            font-weight: 600;
+            font-size: 0.9375rem;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-1);
+        }
+
+        /* ===== Featured Stories ===== */
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: var(--spacing-5);
+        }
+
+        @media (max-width: 900px) {
+            .featured-grid { grid-template-columns: 1fr; }
+        }
+
+        .featured-main {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .featured-main:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-4);
+        }
+
+        .featured-main-image {
+            height: 280px;
+            background: var(--primary-lighter);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .featured-main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-main-content {
+            padding: var(--spacing-5);
+        }
+
+        .featured-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: var(--spacing-1) var(--spacing-2);
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.6875rem;
+            text-transform: uppercase;
+            margin-bottom: var(--spacing-3);
+            letter-spacing: 0.5px;
+        }
+
+        .featured-tag.high-risk { background: var(--error); }
+        .featured-tag.podcast { background: #7d4698; }
+        .featured-tag.video { background: var(--secondary); }
+        .featured-tag.blog { background: #2e8540; }
+
+        .featured-main h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-3);
+            line-height: 1.3;
+        }
+
+        .featured-main h3 a {
+            color: var(--base-darkest);
+            text-decoration: none;
+        }
+
+        .featured-main h3 a:hover {
+            color: var(--primary);
+        }
+
+        .featured-main p {
+            color: var(--base-dark);
+            margin-bottom: var(--spacing-3);
+        }
+
+        .featured-meta {
+            font-size: 0.8125rem;
+            color: var(--base);
+        }
+
+        .featured-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-4);
+        }
+
+        .featured-small {
+            background: var(--white);
+            border-radius: 8px;
+            padding: var(--spacing-4);
+            box-shadow: var(--shadow-2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .featured-small:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-3);
+        }
+
+        .featured-small h4 {
+            font-size: 1rem;
+            margin-bottom: var(--spacing-2);
+            line-height: 1.4;
+        }
+
+        .featured-small h4 a {
+            color: var(--base-darkest);
+            text-decoration: none;
+        }
+
+        .featured-small h4 a:hover {
+            color: var(--primary);
+        }
+
+        .featured-small p {
+            font-size: 0.875rem;
+            color: var(--base-dark);
+            margin-bottom: var(--spacing-2);
+        }
+
+        /* ===== Recent Reports ===== */
+        .reports-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-5);
+        }
+
+        @media (max-width: 900px) {
+            .reports-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .reports-grid { grid-template-columns: 1fr; }
+        }
+
+        .report-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .report-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-3);
+        }
+
+        .report-card-image {
+            height: 140px;
+            background: var(--primary-lighter);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .report-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .report-card-content {
+            padding: var(--spacing-4);
+        }
+
+        .report-card h4 {
+            font-size: 0.9375rem;
+            margin-bottom: var(--spacing-2);
+            line-height: 1.4;
+        }
+
+        .report-card h4 a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .report-card h4 a:hover {
+            text-decoration: underline;
+        }
+
+        .report-card .report-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-2);
+            font-size: 0.75rem;
+            color: var(--base);
+        }
+
+        .report-number {
+            background: var(--base-lightest);
+            padding: var(--spacing-1) var(--spacing-2);
+            border-radius: 4px;
+            font-family: 'SFMono-Regular', Consolas, monospace;
+            font-weight: 600;
+            color: var(--base-dark);
+        }
+
+        /* ===== High Risk Section ===== */
+        .high-risk-section {
+            background: linear-gradient(135deg, #4a1c1c 0%, #7a2828 100%);
+            color: var(--white);
+            padding: var(--spacing-8) 0;
+        }
+
+        .high-risk-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-8);
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .high-risk-content { grid-template-columns: 1fr; }
+        }
+
+        .high-risk-text h2 {
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: var(--spacing-4);
+        }
+
+        .high-risk-text p {
+            opacity: 0.9;
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            margin-bottom: var(--spacing-5);
+        }
+
+        .high-risk-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-4);
+        }
+
+        .hr-stat {
+            background: rgba(255,255,255,0.1);
+            padding: var(--spacing-4);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .hr-stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-1);
+        }
+
+        .hr-stat-label {
+            font-size: 0.8125rem;
+            opacity: 0.8;
+        }
+
+        /* ===== Explore Section ===== */
+        .explore-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-6);
+        }
+
+        @media (max-width: 768px) {
+            .explore-grid { grid-template-columns: 1fr; }
+        }
+
+        .explore-box {
+            background: var(--white);
+            border-radius: 8px;
+            padding: var(--spacing-5);
+            box-shadow: var(--shadow-2);
+        }
+
+        .explore-box h3 {
+            color: var(--primary-darker);
+            margin-bottom: var(--spacing-4);
+            padding-bottom: var(--spacing-3);
+            border-bottom: 2px solid var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .explore-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            columns: 2;
+            column-gap: var(--spacing-4);
+        }
+
+        @media (max-width: 500px) {
+            .explore-list { columns: 1; }
+        }
+
+        .explore-list li {
+            break-inside: avoid;
+            margin-bottom: var(--spacing-2);
+        }
+
+        .explore-list a {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            padding: var(--spacing-2) 0;
+            text-decoration: none;
+            color: var(--base-darkest);
+            font-weight: 500;
+            font-size: 0.9375rem;
+        }
+
+        .explore-list a:hover {
+            color: var(--primary);
+        }
+
+        .explore-list a::before {
+            content: '→';
+            color: var(--primary);
+            font-weight: 400;
+        }
+
+        /* ===== Multimedia Section ===== */
+        .multimedia-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-4);
+        }
+
+        @media (max-width: 900px) {
+            .multimedia-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 500px) {
+            .multimedia-grid { grid-template-columns: 1fr; }
+        }
+
+        .media-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-2);
+            transition: transform 0.2s;
+        }
+
+        .media-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .media-card-image {
+            height: 120px;
+            background: var(--base-lighter);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .media-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(0,0,0,0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .play-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--white);
+            margin-left: 3px;
+        }
+
+        .media-card-content {
+            padding: var(--spacing-3);
+        }
+
+        .media-type {
+            display: inline-block;
+            font-size: 0.625rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: var(--spacing-1) var(--spacing-2);
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 3px;
+            margin-bottom: var(--spacing-2);
+            letter-spacing: 0.5px;
+        }
+
+        .media-type.video { background: var(--secondary); }
+        .media-type.podcast { background: #7d4698; }
+        .media-type.infographic { background: #2e8540; }
+
+        .media-card h4 {
+            font-size: 0.875rem;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .media-card h4 a {
+            color: var(--base-darkest);
+            text-decoration: none;
+        }
+
+        .media-card h4 a:hover {
+            color: var(--primary);
+        }
+
+        /* ===== About CG Section ===== */
+        .about-cg {
+            background: var(--primary-darker);
+            color: var(--white);
+            padding: var(--spacing-8) 0;
+        }
+
+        .about-cg-content {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: var(--spacing-6);
+            align-items: center;
+        }
+
+        @media (max-width: 600px) {
+            .about-cg-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .cg-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid rgba(255,255,255,0.3);
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .cg-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cg-photo svg {
+            width: 80px;
+            height: 80px;
+            opacity: 0.5;
+        }
+
+        .cg-text h2 {
+            color: var(--white);
+            margin-bottom: var(--spacing-3);
+        }
+
+        .cg-text .cg-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-2);
+        }
+
+        .cg-text .cg-title {
+            opacity: 0.8;
+            margin-bottom: var(--spacing-4);
+        }
+
+        .cg-text p {
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        /* ===== Newsletter Section ===== */
+        .newsletter {
+            background: var(--base-lightest);
+            padding: var(--spacing-6) 0;
+        }
+
+        .newsletter-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--spacing-5);
+            flex-wrap: wrap;
+        }
+
+        .newsletter-text h3 {
+            margin-bottom: var(--spacing-2);
+            color: var(--primary-darker);
+        }
+
+        .newsletter-text p {
+            margin: 0;
+            color: var(--base-dark);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: var(--spacing-2);
+        }
+
+        .newsletter-form input {
+            padding: var(--spacing-3) var(--spacing-4);
+            border: 1px solid var(--base-lighter);
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: inherit;
+            min-width: 280px;
+        }
+
+        .newsletter-form input:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: -2px;
+            border-color: var(--primary);
+        }
+
+        @media (max-width: 600px) {
+            .newsletter-form {
+                flex-direction: column;
+                width: 100%;
+            }
+            .newsletter-form input {
+                min-width: auto;
+                width: 100%;
+            }
+        }
+
+        /* ===== Quick Links Grid ===== */
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-4);
+        }
+
+        @media (max-width: 900px) {
+            .quick-links-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 500px) {
+            .quick-links-grid { grid-template-columns: 1fr; }
+        }
+
+        .quick-link-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: var(--spacing-5);
+            text-align: center;
+            box-shadow: var(--shadow-2);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: var(--base-darkest);
+        }
+
+        .quick-link-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-3);
+            color: var(--primary);
+        }
+
+        .quick-link-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-lighter);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-3);
+        }
+
+        .quick-link-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--primary);
+        }
+
+        .quick-link-card h4 {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        /* ===== Footer ===== */
+        .site-footer {
+            background: var(--base-darkest);
+            color: var(--white);
+            padding: var(--spacing-8) 0 var(--spacing-4);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-6);
+            margin-bottom: var(--spacing-6);
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+
+        .footer-section h4 {
+            color: var(--white);
+            margin-bottom: var(--spacing-4);
+            font-size: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section li { margin-bottom: var(--spacing-2); }
+
+        .footer-section a {
+            color: var(--base-light);
+            text-decoration: none;
+            font-size: 0.9375rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            padding-top: var(--spacing-4);
+            border-top: 1px solid var(--base-dark);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--spacing-4);
+            font-size: 0.875rem;
+            color: var(--base-light);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--spacing-4);
+            flex-wrap: wrap;
+        }
+
+        .footer-links a { color: var(--base-light); }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.25rem; }
+            .header-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .header-search {
+                width: 100%;
+                max-width: none;
+            }
+            .nav-list { flex-direction: column; }
+            .nav-list a {
+                border-bottom: none;
+                border-left: 3px solid transparent;
+            }
+            .nav-list a:hover,
+            .nav-list a[aria-current="page"] {
+                border-bottom: none;
+                border-left-color: var(--warning);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Official US Government Banner -->
+    <section class="usa-banner" aria-label="Official government website">
+        <div class="usa-banner__inner">
+            <img class="usa-banner__flag" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 11'%3E%3Crect fill='%23bf0a30' width='16' height='11'/%3E%3Crect fill='white' y='0.85' width='16' height='0.85'/%3E%3Crect fill='white' y='2.54' width='16' height='0.85'/%3E%3Crect fill='white' y='4.23' width='16' height='0.85'/%3E%3Crect fill='white' y='5.92' width='16' height='0.85'/%3E%3Crect fill='white' y='7.62' width='16' height='0.85'/%3E%3Crect fill='white' y='9.31' width='16' height='0.85'/%3E%3Crect fill='%23002868' width='6.4' height='5.92'/%3E%3C/svg%3E" alt="U.S. flag">
+            <span class="usa-banner__text">NOT an official website of the United States government - This is a design mockup</span>
+        </div>
+    </section>
+
+    <!-- Site Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-top">
+                <a href="gao-dod-redesign.html" class="site-logo">
+                    <div class="logo-icon">GAO</div>
+                    <div class="site-title">
+                        U.S. Government Accountability Office
+                        <span>Watchdog of Congress</span>
+                    </div>
+                </a>
+                <form class="header-search" role="search" action="/search" method="get">
+                    <label for="search" class="sr-only">Search GAO.gov</label>
+                    <input type="search" id="search" name="q" placeholder="Search GAO.gov">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+        <nav class="main-nav" aria-label="Main navigation">
+            <div class="container">
+                <ul class="nav-list">
+                    <li><a href="gao-dod-redesign.html">Reports & Testimonies</a></li>
+                    <li><a href="gao-dod-redesign.html">Topics</a></li>
+                    <li><a href="gao-dod-redesign.html">Agencies</a></li>
+                    <li><a href="gao-dod-redesign.html">Legal</a></li>
+                    <li><a href="gao-dod-redesign.html">About GAO</a></li>
+                    <li><a href="gao-dod-redesign.html">For Congress</a></li>
+                    <li><a href="gao-dod-redesign.html">Careers</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Holding Government Accountable</h1>
+                <p class="hero-tagline">
+                    GAO provides fact-based, nonpartisan information to Congress. Often called the "congressional watchdog," we investigate how the federal government spends taxpayer dollars and help improve government operations.
+                </p>
+                <div class="hero-cta">
+                    <a href="gao-dod-redesign.html" class="btn btn-white">Browse Reports</a>
+                    <a href="gao-dod-redesign.html" class="btn btn-outline">Learn About GAO</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Stats -->
+    <section class="impact-stats">
+        <div class="container">
+            <div class="stats-card">
+                <div class="stats-header">
+                    <h2>Our Impact in FY 2024</h2>
+                    <p>GAO's work delivers measurable results for the American people</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number savings">$70.4B</div>
+                        <div class="stat-label">Financial Benefits</div>
+                        <div class="stat-sublabel">Return of $124 for every $1 invested</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1,220</div>
+                        <div class="stat-label">Recommendations Implemented</div>
+                        <div class="stat-sublabel">By federal agencies</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number risk">37</div>
+                        <div class="stat-label">High Risk Areas</div>
+                        <div class="stat-sublabel">Programs needing transformation</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">$162B</div>
+                        <div class="stat-label">Improper Payments Identified</div>
+                        <div class="stat-sublabel">In FY 2024 across government</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Stories -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured</h2>
+            </div>
+            <div class="featured-grid">
+                <article class="featured-main">
+                    <div class="featured-main-image">
+                        <img src="https://www.gao.gov/assets/styles/wide_2x/public/2024-11/capitol-building-thumbnail.PNG.webp" alt="2025 High Risk Report">
+                    </div>
+                    <div class="featured-main-content">
+                        <span class="featured-tag high-risk">High Risk</span>
+                        <h3><a href="gao-dod-redesign.html">2025 High Risk List: Saving Billions and Improving Government</a></h3>
+                        <p>Every two years, GAO identifies federal programs and operations that are high risk due to vulnerabilities to fraud, waste, abuse, and mismanagement, or need transformation. This report shows progress and remaining challenges.</p>
+                        <div class="featured-meta">Released January 2025</div>
+                    </div>
+                </article>
+                <div class="featured-sidebar">
+                    <article class="featured-small">
+                        <span class="featured-tag">Report</span>
+                        <h4><a href="gao-dod-redesign.html">GAO Finds $100 Billion or More in Potential Savings</a></h4>
+                        <p>Our annual report identifies fragmentation, overlap, and duplication across federal programs.</p>
+                        <div class="featured-meta">January 2025</div>
+                    </article>
+                    <article class="featured-small">
+                        <span class="featured-tag video">Video</span>
+                        <h4><a href="gao-dod-redesign.html">The Nation's Fiscal Future: What You Need to Know</a></h4>
+                        <p>Understanding the federal government's long-term fiscal challenges.</p>
+                        <div class="featured-meta">December 2024</div>
+                    </article>
+                    <article class="featured-small">
+                        <span class="featured-tag">Report</span>
+                        <h4><a href="gao-dod-redesign.html">Improper Payments: $162 Billion Estimated in FY 2024</a></h4>
+                        <p>Federal agencies reported significant improper payments requiring attention.</p>
+                        <div class="featured-meta">November 2024</div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Reports -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Recent Reports & Testimonies</h2>
+                <a href="gao-dod-redesign.html" class="view-all-link">View All &rarr;</a>
+            </div>
+            <div class="reports-grid">
+                <article class="report-card">
+                    <div class="report-card-image">
+                        <img src="https://www.gao.gov/assets/extracts/660eb4cb7905d6b08a561e4a3ce12413/rId16_image5.png" alt="Defense Budget report">
+                    </div>
+                    <div class="report-card-content">
+                        <h4><a href="gao-dod-redesign.html">Defense Budget: Effects of Continuing Resolutions on DOD Programs</a></h4>
+                        <div class="report-meta">
+                            <span class="report-number">GAO-26-107065</span>
+                            <span>Jan 21, 2026</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="report-card">
+                    <div class="report-card-image">
+                        <img src="https://www.gao.gov/assets/extracts/966dee596b3593eefe29e070b13f9a49/rId17_image5.png" alt="Coast Guard report">
+                    </div>
+                    <div class="report-card-content">
+                        <h4><a href="gao-dod-redesign.html">Coast Guard Oversight: Strengthening Investigation Collaboration</a></h4>
+                        <div class="report-meta">
+                            <span class="report-number">GAO-26-107341</span>
+                            <span>Jan 21, 2026</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="report-card">
+                    <div class="report-card-image">
+                        <img src="https://www.gao.gov/assets/extracts/4b28801dbd31fce8220765b758b77420/rId18_image5.png" alt="Space Force report">
+                    </div>
+                    <div class="report-card-content">
+                        <h4><a href="gao-dod-redesign.html">Space Force Acquisition: Improving Oversight of Rapid Capabilities</a></h4>
+                        <div class="report-meta">
+                            <span class="report-number">GAO-26-107524</span>
+                            <span>Jan 15, 2026</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="report-card">
+                    <div class="report-card-image">
+                        <img src="https://www.gao.gov/assets/extracts/7e0ae82e018b53186b3b77386ba40834/rId18_image5.png" alt="Navy Shipbuilding report">
+                    </div>
+                    <div class="report-card-content">
+                        <h4><a href="gao-dod-redesign.html">Navy Shipbuilding: Quality Issues Continue to Delay Deliveries</a></h4>
+                        <div class="report-meta">
+                            <span class="report-number">GAO-26-107601</span>
+                            <span>Jan 10, 2026</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="report-card">
+                    <div class="report-card-image">
+                        <img src="https://www.gao.gov/assets/extracts/a7757826c35dd76fe834e92dcd10bd88/rId16_image5.png" alt="Inspector General report">
+                    </div>
+                    <div class="report-card-content">
+                        <h4><a href="gao-dod-redesign.html">Inspector General Oversight Across Military Services</a></h4>
+                        <div class="report-meta">
+                            <span class="report-number">GAO-26-108639</span>
+                            <span>Jan 8, 2026</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="report-card">
+                    <div class="report-card-image">
+                        <img src="https://www.gao.gov/assets/extracts/b17d1313559f9454ef0a1cd895eafc2a/rId18_image5.png" alt="Cybersecurity report">
+                    </div>
+                    <div class="report-card-content">
+                        <h4><a href="gao-dod-redesign.html">Cybersecurity: Actions Needed to Address Critical Infrastructure Risks</a></h4>
+                        <div class="report-meta">
+                            <span class="report-number">GAO-26-106892</span>
+                            <span>Jan 5, 2026</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div style="text-align: center; margin-top: var(--spacing-6);">
+                <a href="gao-dod-redesign.html" class="btn">View All Reports</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- High Risk Section -->
+    <section class="high-risk-section">
+        <div class="container">
+            <div class="high-risk-content">
+                <div class="high-risk-text">
+                    <h2>High Risk List</h2>
+                    <p>
+                        Since 1990, GAO has reported on government operations with greater vulnerabilities to fraud, waste, abuse, and mismanagement, or in need of transformation to address economy, efficiency, or effectiveness challenges.
+                    </p>
+                    <p>
+                        Our 2025 update shows both progress and continued challenges across 37 high-risk areas, with potential savings of billions of dollars.
+                    </p>
+                    <a href="gao-dod-redesign.html" class="btn btn-white">Explore High Risk Areas</a>
+                </div>
+                <div class="high-risk-stats">
+                    <div class="hr-stat">
+                        <div class="hr-stat-number">37</div>
+                        <div class="hr-stat-label">High Risk Areas</div>
+                    </div>
+                    <div class="hr-stat">
+                        <div class="hr-stat-number">4</div>
+                        <div class="hr-stat-label">New in 2025</div>
+                    </div>
+                    <div class="hr-stat">
+                        <div class="hr-stat-number">2</div>
+                        <div class="hr-stat-label">Removed (Progress)</div>
+                    </div>
+                    <div class="hr-stat">
+                        <div class="hr-stat-number">77%</div>
+                        <div class="hr-stat-label">Actions Addressed</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Quick Links</h2>
+            </div>
+            <div class="quick-links-grid">
+                <a href="gao-dod-redesign.html" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    </div>
+                    <h4>Recommendation Database</h4>
+                </a>
+                <a href="gao-dod-redesign.html" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                    </div>
+                    <h4>Bid Protests</h4>
+                </a>
+                <a href="gao-dod-redesign.html" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+                    </div>
+                    <h4>Report Fraud</h4>
+                </a>
+                <a href="gao-dod-redesign.html" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+                    </div>
+                    <h4>Careers at GAO</h4>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explore Section -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Explore Our Work</h2>
+            </div>
+            <div class="explore-grid">
+                <div class="explore-box">
+                    <h3>By Topic</h3>
+                    <ul class="explore-list">
+                        <li><a href="gao-dod-redesign.html">Cybersecurity</a></li>
+                        <li><a href="gao-dod-redesign.html">Defense</a></li>
+                        <li><a href="gao-dod-redesign.html">Healthcare</a></li>
+                        <li><a href="gao-dod-redesign.html">Homeland Security</a></li>
+                        <li><a href="gao-dod-redesign.html">Science & Technology</a></li>
+                        <li><a href="gao-dod-redesign.html">Climate Change</a></li>
+                        <li><a href="gao-dod-redesign.html">Education</a></li>
+                        <li><a href="gao-dod-redesign.html">Financial Markets</a></li>
+                        <li><a href="gao-dod-redesign.html">Veterans Affairs</a></li>
+                        <li><a href="gao-dod-redesign.html">View All Topics &rarr;</a></li>
+                    </ul>
+                </div>
+                <div class="explore-box">
+                    <h3>By Agency</h3>
+                    <ul class="explore-list">
+                        <li><a href="gao-dod-redesign.html">Dept. of Defense</a></li>
+                        <li><a href="gao-dod-redesign.html">Dept. of Health & Human Services</a></li>
+                        <li><a href="gao-dod-redesign.html">Dept. of Homeland Security</a></li>
+                        <li><a href="gao-dod-redesign.html">Dept. of Veterans Affairs</a></li>
+                        <li><a href="gao-dod-redesign.html">Social Security Administration</a></li>
+                        <li><a href="gao-dod-redesign.html">Internal Revenue Service</a></li>
+                        <li><a href="gao-dod-redesign.html">NASA</a></li>
+                        <li><a href="gao-dod-redesign.html">Environmental Protection Agency</a></li>
+                        <li><a href="gao-dod-redesign.html">Dept. of Education</a></li>
+                        <li><a href="gao-dod-redesign.html">View All Agencies &rarr;</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Multimedia Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Multimedia</h2>
+                <a href="gao-dod-redesign.html" class="view-all-link">View All &rarr;</a>
+            </div>
+            <div class="multimedia-grid">
+                <article class="media-card">
+                    <div class="media-card-image">
+                        <div class="play-icon">
+                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+                    <div class="media-card-content">
+                        <span class="media-type podcast">Podcast</span>
+                        <h4><a href="gao-dod-redesign.html">How Can Agencies Stop Fraudsters from Stealing Billions?</a></h4>
+                    </div>
+                </article>
+                <article class="media-card">
+                    <div class="media-card-image">
+                        <div class="play-icon">
+                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+                    <div class="media-card-content">
+                        <span class="media-type video">Video</span>
+                        <h4><a href="gao-dod-redesign.html">Air Traffic Controller Shortage Explained</a></h4>
+                    </div>
+                </article>
+                <article class="media-card">
+                    <div class="media-card-image">
+                        <div class="play-icon">
+                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+                    <div class="media-card-content">
+                        <span class="media-type podcast">Podcast</span>
+                        <h4><a href="gao-dod-redesign.html">Water Recycling for Drought-Stricken Communities</a></h4>
+                    </div>
+                </article>
+                <article class="media-card">
+                    <div class="media-card-image">
+                        <div class="play-icon">
+                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+                    <div class="media-card-content">
+                        <span class="media-type podcast">Podcast</span>
+                        <h4><a href="gao-dod-redesign.html">Mexican Crime Organizations and the Synthetic Drug Crisis</a></h4>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Comptroller General -->
+    <section class="about-cg">
+        <div class="container">
+            <div class="about-cg-content">
+                <div class="cg-photo">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+                <div class="cg-text">
+                    <h2>About the Comptroller General</h2>
+                    <div class="cg-name">Gene L. Dodaro</div>
+                    <div class="cg-title">8th Comptroller General of the United States</div>
+                    <p>
+                        As Comptroller General, Gene Dodaro leads GAO and is the government's chief accountability officer. He has led GAO since 2010, driving improvements in federal programs and operations while delivering significant financial benefits to taxpayers.
+                    </p>
+                    <a href="gao-dod-redesign.html" class="btn btn-outline" style="margin-top: var(--spacing-4);">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h3>Receive GAO Updates</h3>
+                    <p>Get the latest reports, testimonies, and news delivered to your inbox.</p>
+                </div>
+                <form class="newsletter-form" action="/subscribe" method="post">
+                    <label for="email" class="sr-only">Email address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-secondary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>About GAO</h4>
+                    <ul>
+                        <li><a href="gao-dod-redesign.html">What GAO Does</a></li>
+                        <li><a href="gao-dod-redesign.html">Comptroller General</a></li>
+                        <li><a href="gao-dod-redesign.html">Our Organization</a></li>
+                        <li><a href="gao-dod-redesign.html">History</a></li>
+                        <li><a href="gao-dod-redesign.html">Careers at GAO</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Our Work</h4>
+                    <ul>
+                        <li><a href="gao-dod-redesign.html">Reports & Testimonies</a></li>
+                        <li><a href="gao-dod-redesign.html">Recommendations</a></li>
+                        <li><a href="gao-dod-redesign.html">High Risk List</a></li>
+                        <li><a href="gao-dod-redesign.html">Legal Products</a></li>
+                        <li><a href="gao-dod-redesign.html">Bid Protests</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="gao-dod-redesign.html">Email Updates</a></li>
+                        <li><a href="https://twitter.com/usgao">Twitter/X</a></li>
+                        <li><a href="https://www.facebook.com/usgao">Facebook</a></li>
+                        <li><a href="https://www.linkedin.com/company/us-government-accountability-office">LinkedIn</a></li>
+                        <li><a href="https://www.youtube.com/usgao">YouTube</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Help</h4>
+                    <ul>
+                        <li><a href="gao-dod-redesign.html">Contact Us</a></li>
+                        <li><a href="gao-dod-redesign.html">Report Fraud</a></li>
+                        <li><a href="gao-dod-redesign.html">FOIA</a></li>
+                        <li><a href="gao-dod-redesign.html">Accessibility</a></li>
+                        <li><a href="gao-dod-redesign.html">Inspector General</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 U.S. Government Accountability Office</div>
+                <div class="footer-links">
+                    <a href="gao-dod-redesign.html">Privacy Policy</a>
+                    <a href="gao-dod-redesign.html">Site Policies</a>
+                    <a href="gao-dod-redesign.html">Accessibility</a>
+                    <a href="gao-dod-redesign.html">No FEAR Act</a>
+                    <a href="gao-dod-redesign.html">Site Map</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
